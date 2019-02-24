@@ -1,5 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Home = () => <h1>Home Page</h1>;
+class Home extends Component {
+  render() {
+    const { data } = this.props.current_user;
+    return (
+      <div>
+        <h1>Welcome, {data.firstName}</h1>
+      </div>
+    )
+  }
+}
 
-export default Home;
+const mapStateToProps = ({ current_user }) => {
+  return {
+    current_user
+  };
+};
+
+export default connect(mapStateToProps, null)(Home);
