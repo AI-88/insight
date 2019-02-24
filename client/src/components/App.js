@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 const Landing = lazy(() => import('./Landing'));
+const Home = lazy(() => import('./Home'));
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Suspense fallback={<h1>Loading...</h1>}>
           <Switch>
             <Route exact path='/' render={() => <Landing />} />
+            <Route exact path='/home' render={() => <Home />} />
           </Switch>
         </Suspense>
       </BrowserRouter>
