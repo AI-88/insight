@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import { fetchCurrentUser } from '../actions';
-import ContentLayout from '../utils/ContentLayout';
+import ContentLayout from '../utils/contentLayout';
+import requireAuth from '../utils/requireAuth';
 import Sidebar from './Sidebar';
 import './App.css';
 
@@ -32,7 +33,7 @@ class App extends Component {
                   }
                 }}
                 />
-                <Route exact path='/home' render={() => <Home />} />
+                <Route exact path='/home' component={requireAuth(Home)} />
               </Switch>
             </Suspense>
           </ContentLayout>
