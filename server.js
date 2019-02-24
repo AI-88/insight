@@ -7,21 +7,23 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
-require('./models/Users');
+require('./models/User');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongodbURI)
+mongoose.connect(keys.mongodbURI);
 
 app.use(express.json());
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
 });
-app.use(cookieSession({
-  name: 'session',
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.cookieKey]
-}));
+app.use(
+  cookieSession({
+    name: 'session',
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
