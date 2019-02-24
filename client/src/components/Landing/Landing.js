@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 
 const Landing = () => (
   <div>
     <h1>Landing Page</h1>
-    <Button><Link to='/home'>To Home</Link></Button>
+    <Button><a href='/auth/google'>Sign in with Google</a></Button>
   </div>
 );
 
