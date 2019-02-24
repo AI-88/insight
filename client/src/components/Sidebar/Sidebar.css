@@ -1,0 +1,8 @@
+.sidebar, .menu {
+  background-color: #202225;
+}
+
+.logout-btn {
+  position: absolute !important;
+  bottom: 0 !important;
+}
