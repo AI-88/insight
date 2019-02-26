@@ -10,7 +10,7 @@ class Sidebar extends Component {
     const { pathname } = window.location;
     if (pathname.includes('/home')) {
       return ['0'];
-    } else if (pathname.includes('/cutomers')) {
+    } else if (pathname.includes('/customers')) {
       return ['1'];
     } else {
       return ['0'];

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCustomerData } from '../../actions';
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.fetchCustomerData();
+  }
+
   render() {
+    console.log(this.props.customer_data);
     const { data } = this.props.current_user;
     return (
       <div>
@@ -12,10 +18,11 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ current_user }) => {
+const mapStateToProps = ({ current_user, customer_data }) => {
   return {
-    current_user
+    current_user,
+    customer_data
   };
 };
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, { fetchCustomerData })(Home);
