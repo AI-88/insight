@@ -1,7 +1,7 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Spin, Icon } from 'antd';
 import { fetchCurrentUser } from '../actions';
 import ContentLayout from '../utils/contentLayout';
 import requireAuth from '../utils/requireAuth';
@@ -22,7 +22,16 @@ class App extends Component {
         <Layout>
           <Sidebar />
           <ContentLayout>
-            <Suspense fallback={<h1>Loading...</h1>}>
+            <Suspense fallback={
+              (
+                <div className='spinner-container'>
+                  <Spin
+                    size='large'
+                    indicator={<Icon type='loading' />}
+                  />
+                </div>
+              )
+            }>
               <Switch>
                 <Route exact path='/' render={() => {
                   const { data } = this.props.current_user;
