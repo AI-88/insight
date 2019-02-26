@@ -1,6 +1,6 @@
 import { FETCH_CUSTOMER_DATA_REQUEST, FETCH_CUSTOMER_DATA_SUCCESS, FETCH_CUSTOMER_DATA_FAILURE } from '../actions/types';
 
-const INTIAL_STATE = {
+const INITIAL_STATE = {
   data: [],
   isFetching: false,
   errorMsg: null
