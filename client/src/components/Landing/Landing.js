@@ -1,10 +1,14 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Icon } from 'antd';
 
 const Landing = () => (
   <div>
     <h1>Landing Page</h1>
-    <Button><a href='/auth/google'>Sign in with Google</a></Button>
+    <Button type='primary' className='google-button' size='large'>
+      <a href='/auth/google'>
+        <Icon type='google' /> Sign in With Google
+      </a>
+    </Button>
   </div>
 );
 
