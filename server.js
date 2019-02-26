@@ -28,6 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/auth_route')(app);
+require('./routes/stripe_api_route')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
