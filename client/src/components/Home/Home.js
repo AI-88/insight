@@ -10,6 +10,7 @@ class Home extends Component {
 
   renderSubscriptionsData() {
     const { data: { data }, isFetching } = this.props.subscriptions_data;
+
     if (isFetching) {
       return (
         <div className='spinner-container'>
@@ -20,6 +21,7 @@ class Home extends Component {
         </div>
       );
     }
+
     if (data) {
       return (
         <div>
@@ -31,14 +33,13 @@ class Home extends Component {
         </div>
       );
     }
+
     return null;
   }
 
   render() {
     console.log(this.props.subscriptions_data);
-    return (
-      <div>{this.renderSubscriptionsData()}</div>
-    );
+    return <div>{this.renderSubscriptionsData()}</div>;
   }
 }
 
