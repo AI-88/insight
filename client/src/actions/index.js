@@ -12,13 +12,13 @@ export const fetchCurrentUser = () => async dispatch => {
   }
 };
 
-export const fetchCustomerData = () => async dispatch => {
-  dispatch({ type: types.FETCH_CUSTOMER_DATA_REQUEST, payload: true });
+export const fetchSubscriptionsData = () => async dispatch => {
+  dispatch({ type: types.FETCH_SUBSCRIPTIONS_DATA_REQUEST, payload: true });
   try {
-    const request = await axios.get('/api/customer_data');
+    const request = await axios.get('/api/SUBSCRIPTIONS_DATA');
     const { data } = request;
-    dispatch({ type: types.FETCH_CUSTOMER_DATA_SUCCESS, payload: data });
+    dispatch({ type: types.FETCH_SUBSCRIPTIONS_DATA_SUCCESS, payload: data });
   } catch (e) {
-    dispatch({ type: types.FETCH_CUSTOMER_DATA_FAILURE, payload: e });
+    dispatch({ type: types.FETCH_SUBSCRIPTIONS_DATA_FAILURE, payload: e });
   }
 };

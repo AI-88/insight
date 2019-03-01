@@ -10,8 +10,6 @@ class Sidebar extends Component {
     const { pathname } = window.location;
     if (pathname.includes('/home')) {
       return ['0'];
-    } else if (pathname.includes('/customers')) {
-      return ['1'];
     } else {
       return ['0'];
     }
@@ -21,7 +19,6 @@ class Sidebar extends Component {
     const { data } = this.props.current_user;
     const menuItems = [
       { path: 'home', icon: 'home', text: 'Home' },
-      { path: 'customers', icon: 'team', text: 'Customers' },
       { path: 'signout', icon: 'logout', text: 'Logout' }
     ];
 

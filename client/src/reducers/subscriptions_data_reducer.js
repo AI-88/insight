@@ -1,4 +1,4 @@
-import { FETCH_CUSTOMER_DATA_REQUEST, FETCH_CUSTOMER_DATA_SUCCESS, FETCH_CUSTOMER_DATA_FAILURE } from '../actions/types';
+import { FETCH_SUBSCRIPTIONS_DATA_REQUEST, FETCH_SUBSCRIPTIONS_DATA_SUCCESS, FETCH_SUBSCRIPTIONS_DATA_FAILURE } from '../actions/types';
 
 const INITIAL_STATE = {
   data: [],
@@ -6,23 +6,23 @@ const INITIAL_STATE = {
   errorMsg: null
 };
 
-const customerDataReducer = (state = INITIAL_STATE, action) => {
+const subscriptionsDataReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_CUSTOMER_DATA_REQUEST:
+    case FETCH_SUBSCRIPTIONS_DATA_REQUEST:
       return {
         ...state,
         isFetching: action.payload,
         data: [],
         errorMsg: null
       };
-    case FETCH_CUSTOMER_DATA_SUCCESS:
+    case FETCH_SUBSCRIPTIONS_DATA_SUCCESS:
       return {
         ...state,
         isFetching: false,
         data: action.payload,
         errorMsg: null
       };
-    case FETCH_CUSTOMER_DATA_FAILURE:
+    case FETCH_SUBSCRIPTIONS_DATA_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -34,4 +34,4 @@ const customerDataReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default customerDataReducer;
+export default subscriptionsDataReducer;

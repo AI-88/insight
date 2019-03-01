@@ -1,28 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCustomerData } from '../../actions';
+import { Statistic, Icon, Spin } from 'antd';
+import { fetchSubscriptionsData } from '../../actions';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.fetchCustomerData();
+    this.props.fetchSubscriptionsData();
+  }
+
+  renderSubscriptionsData() {
+    const { data: { data }, isFetching } = this.props.subscriptions_data;
+
+    if (isFetching) {
+      return (
+        <div className='spinner-container'>
+          <Spin
+            size='large'
+            indicator={<Icon type='loading' />}
+          />
+        </div>
+      );
+    }
+
+    if (data) {
+      return (
+        <div>
+          <Statistic
+            title='Active Subscriptions'
+            value={data.length}
+            prefix={<Icon type='team' />}
+          />
+        </div>
+      );
+    }
+
+    return null;
   }
 
   render() {
-    console.log(this.props.customer_data);
-    const { data } = this.props.current_user;
-    return (
-      <div>
-        <h1>Welcome, {data.firstName}</h1>
-      </div>
-    )
+    console.log(this.props.subscriptions_data);
+    return <div>{this.renderSubscriptionsData()}</div>;
   }
 }
 
-const mapStateToProps = ({ current_user, customer_data }) => {
+const mapStateToProps = ({ subscriptions_data }) => {
   return {
-    current_user,
-    customer_data
+    subscriptions_data
   };
 };
 
-export default connect(mapStateToProps, { fetchCustomerData })(Home);
+export default connect(mapStateToProps, { fetchSubscriptionsData })(Home);
